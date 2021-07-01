@@ -210,15 +210,15 @@ public class AssetTrackSampleLoader {
     private func processSamples(fromData sampleBuffer: inout Data, sampleMax: inout CGFloat, outputSamples: inout [CGFloat], samplesToProcess: Int, downSampledLength: Int, samplesPerPixel: Int, filter: [Float]) {
         sampleBuffer.withUnsafeBytes { (samples: UnsafePointer<Int16>) in
             var processingBuffer = [Float](repeating: 0.0, count: samplesToProcess)
-            
+
             let sampleCount = vDSP_Length(samplesToProcess)
-            
+
             //Convert 16bit int samples to floats
             vDSP_vflt16(samples, 1, &processingBuffer, 1, sampleCount)
-            
+
             //Take the absolute values to get amplitude
             vDSP_vabs(processingBuffer, 1, &processingBuffer, 1, sampleCount)
-            
+
             //Downsample and average
             var downSampledData = [Float](repeating: 0.0, count: downSampledLength)
             vDSP_desamp(processingBuffer,
@@ -226,16 +226,16 @@ public class AssetTrackSampleLoader {
                         filter, &downSampledData,
                         vDSP_Length(downSampledLength),
                         vDSP_Length(samplesPerPixel))
-            
+
             let downSampledDataCG = downSampledData.map { (value: Float) -> CGFloat in
                 let element = CGFloat(value)
                 if element > sampleMax { sampleMax = element }
                 return element
             }
-            
+
             // Remove processed samples
             sampleBuffer.removeFirst(samplesToProcess * MemoryLayout<Int16>.size)
-            
+
             outputSamples += downSampledDataCG
         }
     }

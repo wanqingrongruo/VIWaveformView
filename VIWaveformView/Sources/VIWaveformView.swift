@@ -69,7 +69,7 @@ public class VIWaveformView: UIView {
 }
 
 public extension VIWaveformView {
-    public func loadVoice(from asset: AVAsset, completion: @escaping ((Error?) -> Void)) -> Cancellable {
+    func loadVoice(from asset: AVAsset, completion: @escaping ((Error?) -> Void)) -> Cancellable {
         let width = frame.width + 300
         let cancellable = Cancellable()
         asset.loadValuesAsynchronously(forKeys: ["duration", "tracks"], completionHandler: { [weak self] in
@@ -166,7 +166,7 @@ extension VIWaveformView: UICollectionViewDataSource, UICollectionViewDelegateFl
         return cell
     }
     
-    private func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         var size = CGSize.zero
         let item = viewModel.items[indexPath.item]
         size.width = CGFloat(item.count)

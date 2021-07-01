@@ -15,7 +15,7 @@ public protocol VIWaveformPresentation {
     func updateWaveformPoint(_ data: [Float])
 }
 
-public protocol VIWaveformNodeViewProvider: class {
+public protocol VIWaveformNodeViewProvider: AnyObject {
     func generateWaveformNodeView() -> NodePresentation
 }
 
