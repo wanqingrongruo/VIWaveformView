@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class VIWaveformNodeView: UIView {
+public class VIWaveformNodeView: UIView {
     
     override open class var layerClass: Swift.AnyClass {
         return CAShapeLayer.self
@@ -18,6 +18,14 @@ class VIWaveformNodeView: UIView {
     var waveformLayer: CAShapeLayer {
         return layer as! CAShapeLayer
     }
+
+    public var strokeColor: UIColor = UIColor.lightGray {
+        didSet {
+            waveformLayer.strokeColor = strokeColor.cgColor
+        }
+    }
+
+    public var heightRatio: CGFloat = 0.5
     
     fileprivate(set) var pointInfo = [CGPoint]()
 
@@ -36,10 +44,10 @@ class VIWaveformNodeView: UIView {
         waveformLayer.fillColor = nil
         waveformLayer.backgroundColor = nil
         waveformLayer.isOpaque = true
-        waveformLayer.strokeColor = UIColor.lightGray.cgColor
+        waveformLayer.strokeColor = strokeColor.cgColor
     }
     
-    override func layoutSubviews() {
+    public override func layoutSubviews() {
         super.layoutSubviews()
         redraw()
     }
@@ -74,7 +82,7 @@ class VIWaveformNodeView: UIView {
         }
         let scaleX = (rect.width - 1) / CGFloat(pointCount - 1)
         let halfHeight = rect.height / 2
-        let scaleY = halfHeight
+        let scaleY = rect.height * heightRatio
         var transform = CGAffineTransform(scaleX: scaleX, y: scaleY)
         transform.ty = halfHeight
         path.apply(transform)
@@ -84,7 +92,7 @@ class VIWaveformNodeView: UIView {
 }
 
 extension VIWaveformNodeView: VIWaveformPresentation {
-    func updateWaveformPoint(_ data: [Float]) {
+    public func updateWaveformPoint(_ data: [Float]) {
         pointInfo.removeAll()
         for (index, point) in data.enumerated() {
             let point = CGPoint(x: CGFloat(index), y: CGFloat(point))

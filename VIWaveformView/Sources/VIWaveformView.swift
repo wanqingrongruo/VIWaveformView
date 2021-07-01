@@ -69,7 +69,7 @@ public class VIWaveformView: UIView {
 }
 
 public extension VIWaveformView {
-    func loadVoice(from asset: AVAsset, completion: @escaping ((Error?) -> Void)) -> Cancellable {
+    func loadVoice(from asset: AVAsset, timeRange: CMTimeRange, completion: @escaping ((Error?) -> Void)) -> Cancellable {
         let width = frame.width + 300
         let cancellable = Cancellable()
         asset.loadValuesAsynchronously(forKeys: ["duration", "tracks"], completionHandler: { [weak self] in
@@ -110,7 +110,7 @@ public extension VIWaveformView {
             }
             
             var firstUpdate = true
-            let operationTask = operation.loadSamples(from: asset, progress: { [weak self] (audioSamples) in
+            let operationTask = operation.loadSamples(from: asset, timeRange: timeRange, progress: { [weak self] (audioSamples) in
                 guard let strongSelf = self else { return }
                 if firstUpdate {
                     updatePoints(with: audioSamples)

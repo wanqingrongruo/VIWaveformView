@@ -40,9 +40,12 @@ public class VIAudioSampleOperation {
         self.widthPerSecond = widthPerSecond
     }
     
-    func loadSamples(from asset: AVAsset, progress: (([VIAudioSample]) -> Void)? = nil, completion: (([VIAudioSample]?, Error?) -> Void)?) -> Cancellable? {
+    func loadSamples(from asset: AVAsset, timeRange: CMTimeRange? = nil, progress: (([VIAudioSample]) -> Void)? = nil, completion: (([VIAudioSample]?, Error?) -> Void)?) -> Cancellable? {
         do {
             let reader = try AVAssetReader(asset: asset)
+            if let timeRange = timeRange {
+                reader.timeRange = timeRange
+            }
             
             let loaders = asset.tracks(withMediaType: .audio).map { (track) -> AssetTrackSampleLoader in
                 let loader = AssetTrackSampleLoader(track: track)

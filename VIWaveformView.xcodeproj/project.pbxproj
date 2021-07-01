@@ -17,6 +17,7 @@
 		5F43FA95212BA06900AA7CC4 /* VIWaveformNodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F43FA90212BA06900AA7CC4 /* VIWaveformNodeView.swift */; };
 		5F43FA96212BA06900AA7CC4 /* WaveformNodeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F43FA91212BA06900AA7CC4 /* WaveformNodeProvider.swift */; };
 		5F43FA97212BA06900AA7CC4 /* Moon River.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5F43FA92212BA06900AA7CC4 /* Moon River.mp3 */; };
+		E0861543268DBDE20068B74B /* OneWavaformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0861542268DBDE20068B74B /* OneWavaformView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		5F43FA90212BA06900AA7CC4 /* VIWaveformNodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VIWaveformNodeView.swift; sourceTree = "<group>"; };
 		5F43FA91212BA06900AA7CC4 /* WaveformNodeProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveformNodeProvider.swift; sourceTree = "<group>"; };
 		5F43FA92212BA06900AA7CC4 /* Moon River.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Moon River.mp3"; sourceTree = "<group>"; };
+		E0861542268DBDE20068B74B /* OneWavaformView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneWavaformView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				5F43FA8F212BA06900AA7CC4 /* VIAudioSampleOperation.swift */,
 				5F43FA90212BA06900AA7CC4 /* VIWaveformNodeView.swift */,
 				5F43FA91212BA06900AA7CC4 /* WaveformNodeProvider.swift */,
+				E0861542268DBDE20068B74B /* OneWavaformView.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -165,6 +168,7 @@
 				5F43FA96212BA06900AA7CC4 /* WaveformNodeProvider.swift in Sources */,
 				5F43FA93212BA06900AA7CC4 /* VIWaveformView.swift in Sources */,
 				5F43FA94212BA06900AA7CC4 /* VIAudioSampleOperation.swift in Sources */,
+				E0861543268DBDE20068B74B /* OneWavaformView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
