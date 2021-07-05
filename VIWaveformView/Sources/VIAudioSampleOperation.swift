@@ -110,7 +110,11 @@ public class VIAudioSampleOperation {
 
 public class AssetTrackSampleLoader {
     
-    public var widthPerSecond: CGFloat = 10
+    public var widthPerSecond: CGFloat = 10 {
+        didSet {
+            generateTrackOutput()
+        }
+    }
     
     public private(set) var audioSample = VIAudioSample()
     
