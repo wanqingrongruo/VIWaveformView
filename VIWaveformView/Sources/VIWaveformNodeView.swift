@@ -26,6 +26,12 @@ public class VIWaveformNodeView: UIView {
     }
 
     public var heightRatio: CGFloat = 0.5
+
+    var lineWidth: CGFloat = 1 {
+        didSet {
+            waveformLayer.lineWidth = lineWidth
+        }
+    }
     
     fileprivate(set) var pointInfo = [CGPoint]()
 
@@ -40,7 +46,7 @@ public class VIWaveformNodeView: UIView {
     }
     
     private func commonInit() {
-        waveformLayer.lineWidth = 1
+        waveformLayer.lineWidth = 2
         waveformLayer.fillColor = nil
         waveformLayer.backgroundColor = nil
         waveformLayer.isOpaque = true
